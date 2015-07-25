@@ -7,14 +7,20 @@
 ## that includes its inverse in the cached data.  
 
 makeCacheMatrix <- function(x = matrix()) {
+  ## set cached inverse to NULL	
   inv <- NULL
-  set <- function(mat) {
-  	mat <<- x
-  	inv <- NULL
+  ## function 1 -- initialize cached matrix and inverse
+  set <- function(y) {
+  	x <<- y
+  	inv <<- NULL
   }
+  ## function 2 -- retrieve matrix values from cache
   get <- function() x
+  ## function 3 -- store inverse in cache 
   setinv <- function(i) inv <<- i
+  ## function 4 -- retrieve inverse from cache
   getinv <- function() inv
+  ## return a list of these functions to the caller
   list(set = set, get = get, setinv = setinv, getinv = getinv) 
 }
 
